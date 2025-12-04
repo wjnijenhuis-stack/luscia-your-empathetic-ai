@@ -14,7 +14,7 @@ const metaBlocks = [
   {
     icon: Calendar,
     title: "Pilot Programma",
-    description: "We zoeken huisartsenpraktijken die samen met ons Luscia willen verbeteren. In ruil krijgt u vroegtijdige toegang en directe invloed op de ontwikkeling.",
+    description: "We zoeken huisartsenpraktijken die samen met ons Intari willen verbeteren. In ruil krijgt u vroegtijdige toegang en directe invloed op de ontwikkeling.",
     items: [
       "12 weken pilot periode",
       "100 patiëntinteracties",
@@ -36,7 +36,7 @@ const metaBlocks = [
   {
     icon: Shield,
     title: "Regelgeving & Privacy",
-    description: "We nemen privacy en veiligheid uiterst serieus. Luscia is gebouwd met compliance als uitgangspunt, niet als bijzaak.",
+    description: "We nemen privacy en veiligheid uiterst serieus. Intari is gebouwd met compliance als uitgangspunt, niet als bijzaak.",
     items: [
       "EU-gehoste data",
       "Volledig AVG-compliant",
@@ -53,7 +53,7 @@ const MetaSection = () => {
         <div className="container-wide">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-up">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Over Luscia</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Over Intari</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
               Gebouwd voor de zorg
             </h2>

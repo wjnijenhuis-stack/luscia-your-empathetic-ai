@@ -7,7 +7,7 @@ const features = [
     icon: Phone,
     title: "Spraak Assistent",
     subtitle: "Telefonisch bereikbaar",
-    description: "Patiënten kunnen bellen naar uw praktijk en worden direct te woord gestaan door Luscia. Natuurlijke spraakherkenning en menselijke intonatie.",
+    description: "Patiënten kunnen bellen naar uw praktijk en worden direct te woord gestaan door Intari. Natuurlijke spraakherkenning en menselijke intonatie.",
     demo: "phone"
   },
   {
@@ -15,7 +15,7 @@ const features = [
     icon: Globe,
     title: "Meerdere talen",
     subtitle: "Nederlands, Engels, en meer",
-    description: "Luscia spreekt vloeiend meerdere talen. Ideaal voor praktijken met een diverse patiëntenpopulatie.",
+    description: "Intari spreekt vloeiend meerdere talen. Ideaal voor praktijken met een diverse patiëntenpopulatie.",
     demo: "languages"
   },
   {
@@ -23,7 +23,7 @@ const features = [
     icon: Heart,
     title: "Empathische tone-of-voice",
     subtitle: "Menselijk en begripvol",
-    description: "Geen robotische antwoorden. Luscia reageert met warmte, geduld en begrip op elke patiënt.",
+    description: "Geen robotische antwoorden. Intari reageert met warmte, geduld en begrip op elke patiënt.",
     demo: "empathy"
   },
   {
@@ -31,7 +31,7 @@ const features = [
     icon: ArrowRight,
     title: "Slimme doorverwijzer",
     subtitle: "Triageondersteuning",
-    description: "Luscia beoordeelt de urgentie en verwijst door naar de juiste zorg: huisarts, HAP, of 112.",
+    description: "Intari beoordeelt de urgentie en verwijst door naar de juiste zorg: huisarts, HAP, of 112.",
     demo: "triage"
   },
   {
@@ -47,7 +47,7 @@ const features = [
     icon: Calendar,
     title: "Afspraak plannen",
     subtitle: "Automatisch inboeken",
-    description: "Patiënten kunnen direct een afspraak inplannen. Luscia checkt beschikbaarheid in real-time.",
+    description: "Patiënten kunnen direct een afspraak inplannen. Intari checkt beschikbaarheid in real-time.",
     demo: "booking"
   },
   {
@@ -63,7 +63,7 @@ const features = [
     icon: Clock,
     title: "24/7 beschikbaar",
     subtitle: "Altijd bereikbaar",
-    description: "Ook buiten kantooruren staat Luscia klaar. Minder gemiste oproepen, meer tevreden patiënten.",
+    description: "Ook buiten kantooruren staat Intari klaar. Minder gemiste oproepen, meer tevreden patiënten.",
     demo: "availability"
   },
   {

@@ -34,7 +34,7 @@ const HeroSection = () => {
                   Daarom is er
                 </p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
-                  Luscia
+                  Intari
                 </h1>
                 <p className="text-2xl md:text-3xl font-display text-primary font-medium">
                   De Empathische AI Assistent
@@ -99,13 +99,13 @@ const HeroSection = () => {
                         </div>
                         <p className="text-xs text-muted-foreground">Inkomend gesprek</p>
                         <p className="font-semibold text-foreground">Huisartsenpraktijk Centrum</p>
-                        <p className="text-sm text-primary font-medium">Verbonden met Luscia</p>
+                        <p className="text-sm text-primary font-medium">Verbonden met Intari</p>
                       </div>
 
                       {/* Conversation */}
                       <div className="space-y-3">
                         <div className="bg-luscia-50 rounded-2xl rounded-tl-sm p-3">
-                          <p className="text-sm text-foreground">Goedemorgen, u spreekt met Luscia van Huisartsenpraktijk Centrum. Waarmee kan ik u helpen?</p>
+                          <p className="text-sm text-foreground">Goedemorgen, u spreekt met Intari van Huisartsenpraktijk Centrum. Waarmee kan ik u helpen?</p>
                         </div>
                         <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 ml-8">
                           <p className="text-sm text-foreground">Ik voel me niet zo lekker en wil graag een afspraak maken.</p>
@@ -122,7 +122,7 @@ const HeroSection = () => {
                           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft delay-100" />
                           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft delay-200" />
                         </div>
-                        <span>Luscia luistert...</span>
+                        <span>Intari luistert...</span>
                       </div>
                     </div>
                   </div>
