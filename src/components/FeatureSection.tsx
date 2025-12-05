@@ -216,8 +216,6 @@ const FeatureSection = () => {
 
   // Scroll spy - detect which section is in view
   useEffect(() => {
-    if (isMobile) return; // skip scroll-spy on mobile
-
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -276,13 +274,9 @@ const FeatureSection = () => {
 
   // Smooth scroll to section when clicking nav
   const scrollToSection = (index: number) => {
-    if (isMobile) {
-      setActiveCategory(categories[index]);
-      return;
-    }
     const section = sectionRefs.current[index];
     if (section) {
-      const offset = 120; // Account for sticky header
+      const offset = isMobile ? 80 : 120; // Account for sticky header
       const top = section.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -305,12 +299,12 @@ const FeatureSection = () => {
           </div>
 
           {/* Mobile: Horizontal scrollable tabs (sticky) */}
-        <div className="lg:hidden sticky top-4 z-30 bg-background/95 backdrop-blur-sm py-3 px-4 mb-4 shadow-sm">
-          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-            {categories.map((category, index) => (
+          <div className="lg:hidden sticky top-4 z-30 bg-background/95 backdrop-blur-sm py-3 px-4 mb-4 shadow-sm">
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              {categories.map((category, index) => (
                 <button
                   key={category.id}
-                ref={(el) => (tabRefs.current[index] = el)}
+                  ref={(el) => (tabRefs.current[index] = el)}
                   onClick={() => scrollToSection(index)}
                   className={`flex items-center gap-2 px-4 py-3 rounded-xl whitespace-nowrap transition-all ${
                     activeCategory.id === category.id
@@ -325,49 +319,9 @@ const FeatureSection = () => {
             </div>
           </div>
 
-        {/* Mobile content: show only active category */}
-        {isMobile ? (
-          <div className="lg:hidden">
-            <div className="bg-card rounded-3xl border border-border p-6 shadow-xl space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-2xl font-bold text-primary">{activeCategory.id}</span>
-                <div>
-                  <h3 className="text-xl font-display font-bold text-foreground">
-                    {activeCategory.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mt-1">
-                    {activeCategory.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid gap-6">
-                <div className="space-y-4">
-                  {activeCategory.features.map((feature, featureIndex) => {
-                    const Icon = feature.icon;
-                    return (
-                      <div key={featureIndex} className="flex gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-luscia-100 flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-foreground">{feature.title}</p>
-                          <p className="text-sm text-muted-foreground mt-0.5">{feature.description}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="bg-secondary/30 rounded-2xl p-5">
-                  {activeCategory.demo}
-                </div>
-              </div>
-              </div>
-            </div>
-        ) : (
-          /* Desktop: Side navigation + scrollable content */
+          {/* Layout: mobile shows stacked sections; desktop shows grid with sticky side nav */}
           <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-16">
-            {/* Left - Sticky navigation (hidden on mobile) */}
+            {/* Left - Sticky navigation (desktop) */}
             <div className="hidden lg:block">
               <div className="sticky top-32 space-y-2">
                 {categories.map((category, index) => {
@@ -401,43 +355,43 @@ const FeatureSection = () => {
               </div>
             </div>
 
-            {/* Right - Scrollable content sections */}
-            <div className="space-y-16 lg:space-y-24">
+            {/* Right - Scrollable content sections (stacked on mobile) */}
+            <div className="space-y-12 lg:space-y-24">
               {categories.map((category, index) => {
                 return (
                   <div
                     key={category.id}
                     ref={(el) => (sectionRefs.current[index] = el)}
-                    className="scroll-mt-32"
+                    className="scroll-mt-28 lg:scroll-mt-32"
                   >
                     {/* Section header */}
-                    <div className="mb-8">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="font-mono text-3xl font-bold text-primary">{category.id}</span>
-                        <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+                    <div className="mb-6 lg:mb-8">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="font-mono text-2xl lg:text-3xl font-bold text-primary">{category.id}</span>
+                        <h3 className="text-xl lg:text-2xl font-display font-bold text-foreground">
                           {category.title}
                         </h3>
                       </div>
-                      <p className="text-muted-foreground text-lg max-w-2xl">
+                      <p className="text-muted-foreground text-base lg:text-lg max-w-2xl">
                         {category.description}
                       </p>
                     </div>
 
                     {/* Content card */}
-                    <div className="bg-card rounded-3xl border border-border p-6 md:p-10 shadow-xl">
-                      <div className="grid md:grid-cols-2 gap-8">
+                    <div className="bg-card rounded-3xl border border-border p-5 lg:p-10 shadow-xl">
+                      <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                         {/* Features list */}
-                        <div className="space-y-6">
+                        <div className="space-y-5 lg:space-y-6">
                           {category.features.map((feature, featureIndex) => {
                             const Icon = feature.icon;
                             return (
                               <div key={featureIndex} className="flex gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-luscia-100 flex items-center justify-center flex-shrink-0">
-                                  <Icon className="w-6 h-6 text-primary" />
+                                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-luscia-100 flex items-center justify-center flex-shrink-0">
+                                  <Icon className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
                                 </div>
                                 <div>
-                                  <p className="font-semibold text-foreground text-lg">{feature.title}</p>
-                                  <p className="text-muted-foreground mt-1">{feature.description}</p>
+                                  <p className="font-semibold text-foreground text-base lg:text-lg">{feature.title}</p>
+                                  <p className="text-muted-foreground mt-1 text-sm lg:text-base">{feature.description}</p>
                                 </div>
                               </div>
                             );
@@ -445,7 +399,7 @@ const FeatureSection = () => {
                         </div>
 
                         {/* Demo area */}
-                        <div className="bg-secondary/30 rounded-2xl p-6">
+                        <div className="bg-secondary/30 rounded-2xl p-5 lg:p-6">
                           {category.demo}
                         </div>
                       </div>
@@ -455,7 +409,6 @@ const FeatureSection = () => {
               })}
             </div>
           </div>
-        )}
         </div>
       </div>
     </section>
