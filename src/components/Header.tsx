@@ -10,7 +10,7 @@ const Header = () => {
             <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-display font-bold text-lg">L</span>
             </div>
-            <span className="font-display text-xl font-semibold text-foreground">Intari</span>
+            <span className="font-display text-xl font-semibold text-foreground">Luscia</span>
           </div>
 
           {/* Navigation */}

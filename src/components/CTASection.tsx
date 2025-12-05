@@ -21,7 +21,7 @@ const CTASection = () => {
 
             {/* Heading */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
-              Doe mee met de Intari Pilot
+              Doe mee met de Luscia Pilot
             </h2>
             
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">

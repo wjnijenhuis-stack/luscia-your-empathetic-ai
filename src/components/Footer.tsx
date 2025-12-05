@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="w-10 h-10 rounded-xl bg-background flex items-center justify-center">
                   <span className="text-foreground font-display font-bold text-xl">L</span>
                 </div>
-                <span className="font-display text-2xl font-semibold">Intari</span>
+                <span className="font-display text-2xl font-semibold">Luscia</span>
               </div>
               <p className="text-background/70 max-w-md leading-relaxed mb-6">
                 De empathische AI-assistent voor huisartsenpraktijken. 
@@ -62,7 +62,7 @@ const Footer = () => {
           {/* Bottom */}
           <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-background/50">
-              © 2024 Intari. Alle rechten voorbehouden.
+              © 2024 Luscia. Alle rechten voorbehouden.
             </p>
             <div className="flex items-center gap-6 text-sm text-background/50">
               <a href="#" className="hover:text-background transition-colors">Privacy</a>
