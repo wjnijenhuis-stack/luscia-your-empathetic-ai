@@ -152,17 +152,17 @@ const categories = [
   {
     id: "04",
     title: "Veiligheid & Privacy",
-    description: "AVG-compliant, EU-hosted, zonder Big Tech lock-in. Uw data blijft van u.",
+    description: "Uw gegevens blijven waar ze horen: in uw eigen praktijk. Luscia kan volledig lokaal draaien, zonder Big Tech, volledig AVG-proof.",
     features: [
       {
         icon: Lock,
         title: "Privacy-First",
-        description: "EU-hosted, AVG-compliant, geen Microsoft of OpenAI. Uw data blijft van u."
+        description: "Uw gegevens blijven waar ze horen: in uw eigen praktijk. Luscia kan volledig lokaal draaien, zonder Big Tech, volledig AVG-proof."
       },
       {
         icon: Shield,
         title: "ISO 27001",
-        description: "Gecertificeerde informatiebeveiliging volgens de hoogste standaarden."
+        description: "Ontworpen volgens de richtlijnen van ISO 27001 en NEN 7510 voor informatiebeveiliging in de zorg."
       },
       {
         icon: ArrowRight,
@@ -174,7 +174,7 @@ const categories = [
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-3">
           {[
-            { label: "EU Hosted", icon: "🇪🇺" },
+            { label: "Local AI", icon: "🤖" },
             { label: "AVG Compliant", icon: "✓" },
             { label: "ISO 27001", icon: "🔒" },
             { label: "No Lock-in", icon: "🔓" }
