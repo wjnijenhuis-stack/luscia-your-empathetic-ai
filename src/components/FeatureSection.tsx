@@ -203,9 +203,20 @@ const FeatureSection = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect viewport for mobile/desktop differences
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024); // tailwind lg breakpoint
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Scroll spy - detect which section is in view
   useEffect(() => {
+    if (isMobile) return; // skip scroll-spy on mobile
+
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -250,10 +261,14 @@ const FeatureSection = () => {
     handleScroll(); // Initial check
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeCategory.id]);
+  }, [activeCategory.id, isMobile]);
 
   // Smooth scroll to section when clicking nav
   const scrollToSection = (index: number) => {
+    if (isMobile) {
+      setActiveCategory(categories[index]);
+      return;
+    }
     const section = sectionRefs.current[index];
     if (section) {
       const offset = 120; // Account for sticky header
@@ -279,7 +294,7 @@ const FeatureSection = () => {
           </div>
 
           {/* Mobile: Horizontal scrollable tabs (sticky) */}
-          <div className="lg:hidden sticky top-16 z-20 bg-background/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8">
+        <div className="lg:hidden sticky top-16 z-20 bg-background/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-4">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
               {categories.map((category, index) => (
                 <button
@@ -298,7 +313,47 @@ const FeatureSection = () => {
             </div>
           </div>
 
-          {/* Desktop: Side navigation + scrollable content */}
+        {/* Mobile content: show only active category */}
+        {isMobile ? (
+          <div className="lg:hidden">
+            <div className="bg-card rounded-3xl border border-border p-6 shadow-xl space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-2xl font-bold text-primary">{activeCategory.id}</span>
+                <div>
+                  <h3 className="text-xl font-display font-bold text-foreground">
+                    {activeCategory.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    {activeCategory.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-6">
+                <div className="space-y-4">
+                  {activeCategory.features.map((feature, featureIndex) => {
+                    const Icon = feature.icon;
+                    return (
+                      <div key={featureIndex} className="flex gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-luscia-100 flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-foreground">{feature.title}</p>
+                          <p className="text-sm text-muted-foreground mt-0.5">{feature.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="bg-secondary/30 rounded-2xl p-5">
+                  {activeCategory.demo}
+                </div>
+              </div>
+              </div>
+            </div>
+        ) : (
+          /* Desktop: Side navigation + scrollable content */
           <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-16">
             {/* Left - Sticky navigation (hidden on mobile) */}
             <div className="hidden lg:block">
@@ -388,6 +443,7 @@ const FeatureSection = () => {
               })}
             </div>
           </div>
+        )}
         </div>
       </div>
     </section>
