@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Phone, Globe, Heart, ArrowRight, Calendar, Shield, Clock, Settings, Lock, Stethoscope } from "lucide-react";
 
 const categories = [
@@ -201,9 +201,70 @@ const categories = [
 
 const FeatureSection = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll spy - detect which section is in view
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+
+      const containerTop = containerRef.current.getBoundingClientRect().top;
+      const containerBottom = containerRef.current.getBoundingClientRect().bottom;
+      
+      // Only activate scroll spy when container is in view
+      if (containerTop > window.innerHeight || containerBottom < 0) return;
+
+      // Find which section is most visible
+      let mostVisibleIndex = 0;
+      let maxVisibility = 0;
+
+      sectionRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+        
+        const rect = ref.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Calculate how much of the section is visible
+        const visibleTop = Math.max(0, rect.top);
+        const visibleBottom = Math.min(windowHeight, rect.bottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        
+        // Weight sections that are more centered in the viewport
+        const centerOffset = Math.abs((rect.top + rect.bottom) / 2 - windowHeight / 2);
+        const centerWeight = 1 - (centerOffset / windowHeight);
+        const visibility = visibleHeight * centerWeight;
+
+        if (visibility > maxVisibility) {
+          maxVisibility = visibility;
+          mostVisibleIndex = index;
+        }
+      });
+
+      if (categories[mostVisibleIndex] && activeCategory.id !== categories[mostVisibleIndex].id) {
+        setActiveCategory(categories[mostVisibleIndex]);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeCategory.id]);
+
+  // Smooth scroll to section when clicking nav
+  const scrollToSection = (index: number) => {
+    const section = sectionRefs.current[index];
+    if (section) {
+      const offset = 120; // Account for sticky header
+      const top = section.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    setActiveCategory(categories[index]);
+  };
 
   return (
-    <section id="features" className="py-20 md:py-32 bg-background">
+    <section id="features" className="py-20 md:py-32 bg-background" ref={containerRef}>
       <div className="section-padding">
         <div className="container-wide">
           {/* Header */}
@@ -217,16 +278,16 @@ const FeatureSection = () => {
             </p>
           </div>
 
-          {/* Mobile: Horizontal tabs */}
-          <div className="lg:hidden mb-8 overflow-x-auto">
-            <div className="flex gap-2 min-w-max pb-2">
-              {categories.map((category) => (
+          {/* Mobile: Horizontal scrollable tabs (sticky) */}
+          <div className="lg:hidden sticky top-16 z-20 bg-background/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8">
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              {categories.map((category, index) => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => scrollToSection(index)}
                   className={`flex items-center gap-2 px-4 py-3 rounded-xl whitespace-nowrap transition-all ${
                     activeCategory.id === category.id
-                      ? 'bg-primary text-primary-foreground'
+                      ? 'bg-primary text-primary-foreground shadow-lg'
                       : 'bg-secondary text-secondary-foreground hover:bg-luscia-100'
                   }`}
                 >
@@ -237,88 +298,94 @@ const FeatureSection = () => {
             </div>
           </div>
 
-          {/* Desktop: Vertical navigation + Content */}
-          <div className="grid lg:grid-cols-[320px_1fr] gap-8 lg:gap-16">
-            {/* Left - Category navigation (hidden on mobile) */}
-            <div className="hidden lg:block space-y-3">
-              {categories.map((category) => {
-                const isActive = activeCategory.id === category.id;
-                
-                return (
-                  <button
-                    key={category.id}
-                    onClick={() => setActiveCategory(category)}
-                    className={`w-full text-left p-5 rounded-2xl transition-all duration-300 group border ${
-                      isActive 
-                        ? 'bg-card shadow-lg border-primary/20' 
-                        : 'bg-transparent border-transparent hover:bg-secondary/50 hover:border-border'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <span className={`font-mono text-2xl font-bold transition-colors ${
-                        isActive ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'
-                      }`}>
-                        {category.id}
-                      </span>
-                      <div className="flex-1">
-                        <p className={`font-semibold text-lg transition-colors ${
+          {/* Desktop: Side navigation + scrollable content */}
+          <div className="grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-16">
+            {/* Left - Sticky navigation (hidden on mobile) */}
+            <div className="hidden lg:block">
+              <div className="sticky top-32 space-y-2">
+                {categories.map((category, index) => {
+                  const isActive = activeCategory.id === category.id;
+                  
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => scrollToSection(index)}
+                      className={`w-full text-left p-4 rounded-xl transition-all duration-300 group border ${
+                        isActive 
+                          ? 'bg-card shadow-lg border-primary/20' 
+                          : 'bg-transparent border-transparent hover:bg-secondary/50 hover:border-border'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`font-mono text-xl font-bold transition-colors ${
+                          isActive ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'
+                        }`}>
+                          {category.id}
+                        </span>
+                        <span className={`font-semibold transition-colors ${
                           isActive ? 'text-foreground' : 'text-foreground/70 group-hover:text-foreground'
                         }`}>
                           {category.title}
-                        </p>
-                        {isActive && (
-                          <p className="text-sm text-muted-foreground mt-1 animate-fade-in">
-                            {category.description}
-                          </p>
-                        )}
+                        </span>
                       </div>
-                    </div>
-                  </button>
-                );
-              })}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Right - Content area */}
-            <div className="lg:sticky lg:top-32 h-fit">
-              <div className="bg-card rounded-3xl border border-border p-6 md:p-10 shadow-xl">
-                {/* Category header (mobile only) */}
-                <div className="lg:hidden mb-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="font-mono text-2xl font-bold text-primary">{activeCategory.id}</span>
-                    <h3 className="text-xl font-display font-bold text-foreground">
-                      {activeCategory.title}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground text-sm">
-                    {activeCategory.description}
-                  </p>
-                </div>
+            {/* Right - Scrollable content sections */}
+            <div className="space-y-16 lg:space-y-24">
+              {categories.map((category, index) => {
+                return (
+                  <div
+                    key={category.id}
+                    ref={(el) => (sectionRefs.current[index] = el)}
+                    className="scroll-mt-32"
+                  >
+                    {/* Section header */}
+                    <div className="mb-8">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="font-mono text-3xl font-bold text-primary">{category.id}</span>
+                        <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+                          {category.title}
+                        </h3>
+                      </div>
+                      <p className="text-muted-foreground text-lg max-w-2xl">
+                        {category.description}
+                      </p>
+                    </div>
 
-                {/* Features list */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="space-y-4">
-                    {activeCategory.features.map((feature, index) => {
-                      const Icon = feature.icon;
-                      return (
-                        <div key={index} className="flex gap-4 animate-fade-up" style={{ animationDelay: `${index * 100}ms` }}>
-                          <div className="w-10 h-10 rounded-xl bg-luscia-100 flex items-center justify-center flex-shrink-0">
-                            <Icon className="w-5 h-5 text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-semibold text-foreground">{feature.title}</p>
-                            <p className="text-sm text-muted-foreground mt-0.5">{feature.description}</p>
-                          </div>
+                    {/* Content card */}
+                    <div className="bg-card rounded-3xl border border-border p-6 md:p-10 shadow-xl">
+                      <div className="grid md:grid-cols-2 gap-8">
+                        {/* Features list */}
+                        <div className="space-y-6">
+                          {category.features.map((feature, featureIndex) => {
+                            const Icon = feature.icon;
+                            return (
+                              <div key={featureIndex} className="flex gap-4">
+                                <div className="w-12 h-12 rounded-xl bg-luscia-100 flex items-center justify-center flex-shrink-0">
+                                  <Icon className="w-6 h-6 text-primary" />
+                                </div>
+                                <div>
+                                  <p className="font-semibold text-foreground text-lg">{feature.title}</p>
+                                  <p className="text-muted-foreground mt-1">{feature.description}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
-                      );
-                    })}
-                  </div>
 
-                  {/* Demo area */}
-                  <div className="bg-secondary/30 rounded-2xl p-5 animate-fade-in">
-                    {activeCategory.demo}
+                        {/* Demo area */}
+                        <div className="bg-secondary/30 rounded-2xl p-6">
+                          {category.demo}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
