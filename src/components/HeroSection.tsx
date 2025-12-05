@@ -31,11 +31,11 @@ const HeroSection = () => {
                 </div>
               </div>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="w-28 sm:w-36 md:w-44 lg:w-52 drop-shadow-lg bg-card/80 backdrop-blur-sm rounded-[28px] p-2">
+                <div className="w-28 sm:w-36 md:w-44 lg:w-52 drop-shadow-lg">
                   <img
                     src="/hero/heartbeat.png"
                     alt="Vriendelijke hartslag visual"
-                    className="w-full h-full object-contain opacity-60"
+                    className="w-full h-full object-contain opacity-60 rounded-[32px]"
                     loading="lazy"
                   />
                 </div>
