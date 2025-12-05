@@ -13,7 +13,7 @@ const HeroSection = () => {
             {/* Two-up images with centered heartbeat overlay */}
             <div className="relative w-full">
               <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
-                <div className="overflow-hidden rounded-3xl shadow-xl border border-border bg-card">
+                <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card">
                   <img
                     src="/hero/patient-phone.png"
                     alt="Patiënt in gesprek aan de telefoon"
@@ -21,7 +21,7 @@ const HeroSection = () => {
                     loading="lazy"
                   />
                 </div>
-                <div className="overflow-hidden rounded-3xl shadow-xl border border-border bg-card">
+                <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card">
                   <img
                     src="/hero/reception.png"
                     alt="Gastvrije assistent aan de balie"
@@ -31,11 +31,11 @@ const HeroSection = () => {
                 </div>
               </div>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="w-28 sm:w-36 md:w-44 lg:w-52 drop-shadow-lg">
+                <div className="w-28 sm:w-36 md:w-44 lg:w-52 drop-shadow-lg bg-card/80 backdrop-blur-sm rounded-[28px] p-2">
                   <img
                     src="/hero/heartbeat.png"
                     alt="Vriendelijke hartslag visual"
-                    className="w-full h-full object-contain opacity-90"
+                    className="w-full h-full object-contain opacity-60"
                     loading="lazy"
                   />
                 </div>
