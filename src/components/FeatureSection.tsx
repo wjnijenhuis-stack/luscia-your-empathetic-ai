@@ -202,6 +202,7 @@ const categories = [
 const FeatureSection = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -263,6 +264,16 @@ const FeatureSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeCategory.id, isMobile]);
 
+  // Keep active tab in view on mobile
+  useEffect(() => {
+    if (!isMobile) return;
+    const index = categories.findIndex((c) => c.id === activeCategory.id);
+    const tab = tabRefs.current[index];
+    if (tab?.scrollIntoView) {
+      tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+  }, [activeCategory.id, isMobile]);
+
   // Smooth scroll to section when clicking nav
   const scrollToSection = (index: number) => {
     if (isMobile) {
@@ -296,9 +307,10 @@ const FeatureSection = () => {
           {/* Mobile: Horizontal scrollable tabs (sticky) */}
         <div className="lg:hidden sticky top-16 z-20 bg-background/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-4">
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-              {categories.map((category, index) => (
+            {categories.map((category, index) => (
                 <button
                   key={category.id}
+                ref={(el) => (tabRefs.current[index] = el)}
                   onClick={() => scrollToSection(index)}
                   className={`flex items-center gap-2 px-4 py-3 rounded-xl whitespace-nowrap transition-all ${
                     activeCategory.id === category.id
