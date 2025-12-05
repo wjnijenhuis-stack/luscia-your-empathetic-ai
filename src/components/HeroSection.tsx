@@ -58,7 +58,7 @@ const HeroSection = () => {
               <span className="px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium shadow-md">
                 Telefonisch bereikbaar
               </span>
-              <span className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium shadow-md">
+              <span className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-md">
                 Voor uw praktijk
               </span>
             </div>
