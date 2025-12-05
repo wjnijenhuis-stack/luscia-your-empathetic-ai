@@ -7,9 +7,11 @@ const Header = () => {
         <div className="container-wide flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">L</span>
-            </div>
+            <img 
+              src="/hero/Luscia_transparant.png" 
+              alt="Luscia" 
+              className="w-8 h-8 object-contain"
+            />
             <span className="font-display text-xl font-semibold text-foreground">Luscia</span>
           </div>
 

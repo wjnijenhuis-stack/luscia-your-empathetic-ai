@@ -25,11 +25,11 @@ const HeroSection = () => {
 
               {/* Lucia center/right */}
               <div className="relative w-full max-w-[360px] lg:max-w-[420px]">
-                <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card">
+                <div className="overflow-hidden rounded-[32px] shadow-xl">
                   <img
                     src="/hero/Luscia_transparant.png"
                     alt="Luscia AI assistent"
-                    className="w-full h-full object-cover aspect-[4/5] sm:aspect-[3/4]"
+                    className="w-full h-full object-contain aspect-[4/5] sm:aspect-[3/4]"
                     loading="lazy"
                   />
                 </div>
