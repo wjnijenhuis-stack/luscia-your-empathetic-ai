@@ -43,6 +43,12 @@ const HeroSection = () => {
 
                 {/* Conversation bubbles */}
                 <div className="absolute -left-4 bottom-6 flex flex-col gap-3 w-[240px] sm:w-[260px] max-w-[70vw]">
+                  <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
+                    <span className="mt-0.5 text-primary">
+                      <Bot className="w-4 h-4" />
+                    </span>
+                    <p className="text-sm text-foreground">U spreekt met Luscia de AI-assistent van Huisartsenpraktijk het Centrum. Waarmee kan ik u helpen?</p>
+                  </div>
                   <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60">
                     <p className="text-sm text-foreground">Ik ben benieuwd naar de uitslag van mijn bloedonderzoek.</p>
                   </div>
