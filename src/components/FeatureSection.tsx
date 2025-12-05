@@ -289,7 +289,7 @@ const FeatureSection = () => {
         <div className="container-wide">
           {/* Header */}
           <div className="text-center mb-12 md:mb-20 animate-fade-up">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Features</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Hoe Luscia helpt</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
               Alles wat u nodig heeft
             </h2>

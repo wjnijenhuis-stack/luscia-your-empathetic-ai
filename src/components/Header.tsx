@@ -16,7 +16,7 @@ const Header = () => {
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Features
+              Hoe Luscia helpt
             </a>
             <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Over ons
