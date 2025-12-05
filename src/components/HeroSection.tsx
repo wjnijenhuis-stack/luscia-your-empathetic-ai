@@ -1,6 +1,6 @@
 import { Bot } from "lucide-react";
 
-import { Bot, Phone } from "lucide-react";
+import { Bot, Phone, Mic } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -41,6 +41,13 @@ const HeroSection = () => {
                   <div className="bg-card rounded-[22px] overflow-hidden">
                     <div className="bg-foreground h-6 flex items-center justify-center" />
                     <div className="p-5 space-y-5">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary text-secondary-foreground font-medium">
+                          <Mic className="w-3.5 h-3.5 text-primary" />
+                          Spraakgesprek actief
+                        </span>
+                        <span className="text-foreground font-semibold">02:34</span>
+                      </div>
                       <div className="text-center space-y-1">
                         <div className="w-14 h-14 mx-auto rounded-full bg-luscia-blue-100 flex items-center justify-center">
                           <Phone className="w-7 h-7 text-primary" />
@@ -63,12 +70,13 @@ const HeroSection = () => {
                       </div>
 
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <div className="flex gap-0.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft" />
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft delay-100" />
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft delay-200" />
+                        <div className="flex gap-0.5 items-center">
+                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft" />
+                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft delay-100" />
+                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft delay-200" />
+                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft delay-300" />
                         </div>
-                        <span>Luscia luistert...</span>
+                        <span>Opname loopt</span>
                       </div>
                     </div>
                   </div>
