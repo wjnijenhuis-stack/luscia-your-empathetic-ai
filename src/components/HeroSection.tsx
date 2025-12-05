@@ -1,5 +1,3 @@
-import { Bot } from "lucide-react";
-
 import { Bot, Phone, Mic } from "lucide-react";
 
 const HeroSection = () => {
@@ -55,6 +53,13 @@ const HeroSection = () => {
                         <p className="text-xs text-muted-foreground">Inkomend gesprek</p>
                         <p className="font-semibold text-foreground text-sm">Huisartsenpraktijk Centrum</p>
                         <p className="text-xs text-primary font-medium">Verbonden met Luscia</p>
+                        <div className="flex items-center justify-center gap-1 mt-2 text-primary">
+                          <span className="block w-1.5 h-6 rounded-full bg-primary animate-pulse-soft" />
+                          <span className="block w-1.5 h-4 rounded-full bg-primary animate-pulse-soft delay-75" />
+                          <span className="block w-1.5 h-7 rounded-full bg-primary animate-pulse-soft delay-150" />
+                          <span className="block w-1.5 h-4 rounded-full bg-primary animate-pulse-soft delay-225" />
+                          <span className="block w-1.5 h-6 rounded-full bg-primary animate-pulse-soft delay-300" />
+                        </div>
                       </div>
 
                       <div className="space-y-3 text-sm">
@@ -69,15 +74,7 @@ const HeroSection = () => {
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <div className="flex gap-0.5 items-center">
-                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft" />
-                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft delay-100" />
-                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft delay-200" />
-                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse-soft delay-300" />
-                        </div>
-                        <span>Opname loopt</span>
-                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground" />
                     </div>
                   </div>
                 </div>
