@@ -190,7 +190,7 @@ const categories = [
             <Lock className="w-6 h-6 text-primary" />
             <div>
               <p className="font-medium text-foreground">Data Locatie</p>
-              <p className="text-sm text-muted-foreground">Amsterdam, Nederland</p>
+              <p className="text-sm text-muted-foreground">Lokaal of EU-hosting, naar keuze</p>
             </div>
           </div>
         </div>
