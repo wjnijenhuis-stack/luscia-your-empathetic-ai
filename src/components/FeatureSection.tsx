@@ -152,7 +152,7 @@ const categories = [
   {
     id: "04",
     title: "Veiligheid & Privacy",
-    description: "Uw gegevens blijven waar ze horen: in uw eigen praktijk. Luscia kan volledig lokaal draaien, zonder Big Tech, volledig AVG-proof.",
+    description: "Uw gegevens blijven waar ze horen: in uw eigen praktijk. Luscia kan volledig lokaal draaien, volledig AVG-proof.",
     features: [
       {
         icon: Lock,
@@ -167,16 +167,16 @@ const categories = [
       {
         icon: ArrowRight,
         title: "Geen Lock-in",
-        description: "Flexibele contracten zonder langetermijnverplichtingen. U blijft in controle."
+        description: "Geen Big Tech lock-in. Flexibele contracten zonder langetermijnverplichtingen. U blijft in controle en data blijft van u."
       }
     ],
     demo: (
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-3">
           {[
-            { label: "Local AI", icon: "🤖" },
+            { label: "Local AI", icon: "🖥️" },
             { label: "AVG Compliant", icon: "✓" },
-            { label: "ISO 27001", icon: "🔒" },
+            { label: "ISO 27001", icon: "🛡️" },
             { label: "No Lock-in", icon: "🔓" }
           ].map((badge) => (
             <div key={badge.label} className="p-4 bg-luscia-50 rounded-xl text-center">
