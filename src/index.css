@@ -6,78 +6,75 @@
 
 @layer base {
   :root {
-    /* Calming medical blue palette */
-    --background: 210 33% 98%;
-    --foreground: 215 25% 15%;
+    /* Energized, warm professional palette */
+    --background: 34 24% 94%;           /* #F4F1ED warm off-white */
+    --foreground: 221 5% 22%;           /* #2F3542 donkergrijs */
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 221 5% 22%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 221 5% 22%;
 
-    /* Primary - Deep calming blue */
-    --primary: 210 70% 45%;
+    /* Primary / Accent blues */
+    --primary: 223 58% 42%;             /* #2D4FA7 warm zorgblauw */
     --primary-foreground: 0 0% 100%;
+    --accent: 222 100% 74%;             /* #7DA4FF helder vriendelijk blauw */
+    --accent-foreground: 223 58% 20%;
 
-    /* Secondary - Light blue tint */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 210 70% 35%;
-
-    --muted: 210 25% 93%;
-    --muted-foreground: 215 15% 50%;
-
-    /* Accent - Warm coral for CTAs */
-    --accent: 15 85% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Secondary / Muted warm neutrals */
+    --secondary: 25 27% 86%;            /* #E5DAD2 beige tint */
+    --secondary-foreground: 221 5% 22%;
+    --muted: 25 27% 90%;
+    --muted-foreground: 221 5% 45%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 25% 90%;
-    --input: 210 25% 90%;
-    --ring: 210 70% 45%;
+    --border: 25 27% 86%;
+    --input: 25 27% 86%;
+    --ring: 223 58% 42%;
 
     --radius: 0.75rem;
 
-    /* Custom Luscia colors */
-    --luscia-blue-50: 210 50% 97%;
-    --luscia-blue-100: 210 50% 94%;
-    --luscia-blue-200: 210 50% 85%;
-    --luscia-blue-300: 210 55% 70%;
-    --luscia-blue-400: 210 60% 55%;
-    --luscia-blue-500: 210 70% 45%;
-    --luscia-blue-600: 210 75% 38%;
-    --luscia-blue-700: 210 80% 30%;
-    --luscia-blue-800: 210 85% 22%;
-    --luscia-blue-900: 210 90% 15%;
+    /* Custom scale repurposed to new blues */
+    --luscia-blue-50: 222 100% 95%;
+    --luscia-blue-100: 222 100% 90%;
+    --luscia-blue-200: 222 90% 82%;
+    --luscia-blue-300: 222 85% 74%;
+    --luscia-blue-400: 223 65% 55%;
+    --luscia-blue-500: 223 58% 42%;
+    --luscia-blue-600: 223 58% 35%;
+    --luscia-blue-700: 223 58% 28%;
+    --luscia-blue-800: 223 58% 22%;
+    --luscia-blue-900: 223 58% 16%;
 
     /* Warm accent */
-    --luscia-warm: 15 85% 60%;
-    --luscia-warm-light: 15 90% 95%;
+    --luscia-warm: 25 27% 86%;
+    --luscia-warm-light: 34 24% 94%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210 50% 97%) 0%, hsl(210 40% 92%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 30% 98%) 100%);
-    --gradient-blue: linear-gradient(135deg, hsl(210 70% 45%) 0%, hsl(210 80% 35%) 100%);
-    --gradient-warm: linear-gradient(135deg, hsl(15 85% 60%) 0%, hsl(25 90% 55%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(34 24% 94%) 0%, hsl(25 27% 86%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(34 24% 94%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(223 58% 42%) 0%, hsl(222 100% 74%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(25 27% 86%) 0%, hsl(34 24% 94%) 100%);
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(210 25% 15% / 0.03);
-    --shadow-md: 0 4px 6px -1px hsl(210 25% 15% / 0.05), 0 2px 4px -2px hsl(210 25% 15% / 0.05);
-    --shadow-lg: 0 10px 15px -3px hsl(210 25% 15% / 0.08), 0 4px 6px -4px hsl(210 25% 15% / 0.05);
-    --shadow-xl: 0 20px 25px -5px hsl(210 25% 15% / 0.08), 0 8px 10px -6px hsl(210 25% 15% / 0.05);
-    --shadow-glow: 0 0 40px hsl(210 70% 45% / 0.15);
+    /* Shadows tuned to dark foreground */
+    --shadow-sm: 0 1px 2px 0 hsl(221 5% 22% / 0.06);
+    --shadow-md: 0 4px 6px -1px hsl(221 5% 22% / 0.08), 0 2px 4px -2px hsl(221 5% 22% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(221 5% 22% / 0.12), 0 4px 6px -4px hsl(221 5% 22% / 0.08);
+    --shadow-xl: 0 20px 25px -5px hsl(221 5% 22% / 0.14), 0 8px 10px -6px hsl(221 5% 22% / 0.10);
+    --shadow-glow: 0 0 40px hsl(222 100% 74% / 0.25);
 
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 215 25% 15%;
-    --sidebar-primary: 210 70% 45%;
+    --sidebar-foreground: 221 5% 22%;
+    --sidebar-primary: 223 58% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 210 70% 35%;
-    --sidebar-border: 210 25% 90%;
-    --sidebar-ring: 210 70% 45%;
+    --sidebar-accent: 25 27% 86%;
+    --sidebar-accent-foreground: 221 5% 22%;
+    --sidebar-border: 25 27% 86%;
+    --sidebar-ring: 223 58% 42%;
   }
 
   .dark {
