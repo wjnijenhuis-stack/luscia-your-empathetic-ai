@@ -52,7 +52,7 @@ const HeroSection = () => {
 
             {/* Badges */}
             <div className="flex flex-wrap gap-3 justify-center animate-fade-up">
-              <span className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-md">
+              <span className="px-4 py-2 rounded-full bg-luscia-warm text-foreground text-sm font-medium shadow-md">
                 Menselijk & Warm
               </span>
               <span className="px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium shadow-md">
