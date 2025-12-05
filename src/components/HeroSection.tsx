@@ -12,9 +12,9 @@ const HeroSection = () => {
       <div className="section-padding relative z-10">
         <div className="container-wide">
           <div className="flex flex-col gap-8 lg:gap-12">
-            <div className="grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 items-center">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start lg:items-center justify-center">
               {/* Patient left */}
-              <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card">
+              <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card w-full max-w-[360px] lg:max-w-[420px]">
                 <img
                   src="/hero/patient-phone.png"
                   alt="Patiënt in gesprek aan de telefoon"
@@ -24,7 +24,7 @@ const HeroSection = () => {
               </div>
 
               {/* Lucia center/right */}
-              <div className="relative">
+              <div className="relative w-full max-w-[360px] lg:max-w-[420px]">
                 <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card">
                   <img
                     src="/hero/lucia.png"
@@ -42,7 +42,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Conversation bubbles */}
-                <div className="absolute -left-6 bottom-8 flex flex-col gap-3 w-[280px] max-w-[70vw]">
+                <div className="absolute -left-4 bottom-6 flex flex-col gap-3 w-[240px] sm:w-[260px] max-w-[70vw]">
                   <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60">
                     <p className="text-sm text-foreground">Ik ben benieuwd naar de uitslag van mijn bloedonderzoek.</p>
                   </div>
