@@ -9,56 +9,48 @@ const HeroSection = () => {
 
       <div className="section-padding relative z-10">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-12 items-center">
-            {/* Image collage */}
-            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
-              <div className="sm:col-span-2">
+          <div className="flex flex-col gap-6 lg:gap-10 items-center">
+            {/* Two-up images with centered heartbeat overlay */}
+            <div className="relative w-full">
+              <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
+                <div className="overflow-hidden rounded-3xl shadow-xl border border-border bg-card">
+                  <img
+                    src="/hero/patient-phone.png"
+                    alt="Patiënt in gesprek aan de telefoon"
+                    className="w-full h-full object-cover aspect-[4/5] sm:aspect-[4/5] md:aspect-[3/4]"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="overflow-hidden rounded-3xl shadow-xl border border-border bg-card">
                   <img
                     src="/hero/reception.png"
                     alt="Gastvrije assistent aan de balie"
-                    className="w-full h-full object-cover aspect-[3/2]"
+                    className="w-full h-full object-cover aspect-[4/5] sm:aspect-[4/5] md:aspect-[3/4]"
                     loading="lazy"
                   />
                 </div>
               </div>
-              <div className="space-y-4">
-                <div className="overflow-hidden rounded-3xl shadow-lg border border-border bg-card">
-                  <img
-                    src="/hero/patient-phone.png"
-                    alt="Patiënt in gesprek aan de telefoon"
-                    className="w-full h-full object-cover aspect-square"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-3xl shadow-lg border border-border bg-card">
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                <div className="w-28 sm:w-36 md:w-44 lg:w-52 drop-shadow-lg">
                   <img
                     src="/hero/heartbeat.png"
                     alt="Vriendelijke hartslag visual"
-                    className="w-full h-full object-cover aspect-square"
+                    className="w-full h-full object-contain opacity-90"
                     loading="lazy"
                   />
                 </div>
               </div>
-              <div className="flex sm:hidden gap-3">
-                <span className="px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-md">
-                  Menselijk & Warm
-                </span>
-                <span className="px-3 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium shadow-md">
-                  Telefonisch bereikbaar
-                </span>
-              </div>
             </div>
 
-            {/* Minimal accent badges (desktop) */}
-            <div className="hidden sm:flex flex-col gap-3 animate-fade-up">
-              <span className="self-start px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-md">
+            {/* Badges */}
+            <div className="flex flex-wrap gap-3 justify-center animate-fade-up">
+              <span className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-md">
                 Menselijk & Warm
               </span>
-              <span className="self-start px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium shadow-md">
+              <span className="px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium shadow-md">
                 Telefonisch bereikbaar
               </span>
-              <span className="self-start px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium shadow-md">
+              <span className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium shadow-md">
                 Voor uw praktijk
               </span>
             </div>
