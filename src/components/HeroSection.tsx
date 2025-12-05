@@ -15,7 +15,7 @@ const HeroSection = () => {
               <div className="sm:col-span-2">
                 <div className="overflow-hidden rounded-3xl shadow-xl border border-border bg-card">
                   <img
-                    src="/hero/reception.jpg"
+                    src="/hero/reception.png"
                     alt="Gastvrije assistent aan de balie"
                     className="w-full h-full object-cover aspect-[3/2]"
                     loading="lazy"
@@ -25,7 +25,7 @@ const HeroSection = () => {
               <div className="space-y-4">
                 <div className="overflow-hidden rounded-3xl shadow-lg border border-border bg-card">
                   <img
-                    src="/hero/patient-phone.jpg"
+                    src="/hero/patient-phone.png"
                     alt="Patiënt in gesprek aan de telefoon"
                     className="w-full h-full object-cover aspect-square"
                     loading="lazy"
@@ -33,7 +33,7 @@ const HeroSection = () => {
                 </div>
                 <div className="overflow-hidden rounded-3xl shadow-lg border border-border bg-card">
                   <img
-                    src="/hero/heartbeat.jpg"
+                    src="/hero/heartbeat.png"
                     alt="Vriendelijke hartslag visual"
                     className="w-full h-full object-cover aspect-square"
                     loading="lazy"
