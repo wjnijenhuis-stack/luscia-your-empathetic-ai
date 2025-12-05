@@ -299,7 +299,7 @@ const FeatureSection = () => {
           </div>
 
           {/* Mobile: Horizontal scrollable tabs (sticky) */}
-          <div className="lg:hidden sticky top-4 z-30 bg-background/95 backdrop-blur-sm py-3 px-4 mb-4 shadow-sm">
+          <div className="lg:hidden sticky top-20 z-30 bg-background/95 backdrop-blur-sm py-3 px-4 mb-4 shadow-sm">
             <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
               {categories.map((category, index) => (
                 <button
