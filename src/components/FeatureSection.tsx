@@ -216,59 +216,96 @@ const FeatureSection = () => {
 
   // Scroll spy - detect which section is in view
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (ticking) return;
+      ticking = true;
 
-      const containerTop = containerRef.current.getBoundingClientRect().top;
-      const containerBottom = containerRef.current.getBoundingClientRect().bottom;
-      
-      // Only activate scroll spy when container is in view
-      if (containerTop > window.innerHeight || containerBottom < 0) return;
-
-      // Find which section is most visible
-      let mostVisibleIndex = 0;
-      let maxVisibility = 0;
-
-      sectionRefs.current.forEach((ref, index) => {
-        if (!ref) return;
-        
-        const rect = ref.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        // Calculate how much of the section is visible
-        const visibleTop = Math.max(0, rect.top);
-        const visibleBottom = Math.min(windowHeight, rect.bottom);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        
-        // Weight sections that are more centered in the viewport
-        const centerOffset = Math.abs((rect.top + rect.bottom) / 2 - windowHeight / 2);
-        const centerWeight = 1 - (centerOffset / windowHeight);
-        const visibility = visibleHeight * centerWeight;
-
-        if (visibility > maxVisibility) {
-          maxVisibility = visibility;
-          mostVisibleIndex = index;
+      requestAnimationFrame(() => {
+        if (!containerRef.current) {
+          ticking = false;
+          return;
         }
-      });
 
-      if (categories[mostVisibleIndex] && activeCategory.id !== categories[mostVisibleIndex].id) {
-        setActiveCategory(categories[mostVisibleIndex]);
-      }
+        const containerTop = containerRef.current.getBoundingClientRect().top;
+        const containerBottom = containerRef.current.getBoundingClientRect().bottom;
+        
+        // Only activate scroll spy when container is in view
+        // Stop scroll spy when we've scrolled past the container
+        if (containerTop > window.innerHeight || containerBottom < 0) {
+          ticking = false;
+          return;
+        }
+
+        // Find which section is most visible
+        let mostVisibleIndex = 0;
+        let maxVisibility = 0;
+
+        sectionRefs.current.forEach((ref, index) => {
+          if (!ref) return;
+          
+          const rect = ref.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // Calculate how much of the section is visible
+          const visibleTop = Math.max(0, rect.top);
+          const visibleBottom = Math.min(windowHeight, rect.bottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          
+          // Weight sections that are more centered in the viewport
+          const centerOffset = Math.abs((rect.top + rect.bottom) / 2 - windowHeight / 2);
+          const centerWeight = 1 - (centerOffset / windowHeight);
+          const visibility = visibleHeight * centerWeight;
+
+          if (visibility > maxVisibility) {
+            maxVisibility = visibility;
+            mostVisibleIndex = index;
+          }
+        });
+
+        // Only update if we found a valid section and it's different
+        if (categories[mostVisibleIndex] && activeCategory.id !== categories[mostVisibleIndex].id) {
+          setActiveCategory(categories[mostVisibleIndex]);
+        }
+
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    
+    // Initial check after a small delay to ensure refs are populated
+    const timeoutId = setTimeout(() => {
+      handleScroll();
+    }, 100);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeCategory.id, isMobile]);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isMobile]); // Remove activeCategory.id from dependencies to prevent re-initialization
 
   // Keep active tab in view on mobile
   useEffect(() => {
     if (!isMobile) return;
+    
+    // Only scroll tab into view if the feature section is visible
+    if (!containerRef.current) return;
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const isContainerVisible = containerRect.top < window.innerHeight && containerRect.bottom > 0;
+    
+    if (!isContainerVisible) return;
+    
     const index = categories.findIndex((c) => c.id === activeCategory.id);
     const tab = tabRefs.current[index];
     if (tab?.scrollIntoView) {
-      tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      // Use a small delay to avoid interfering with page scroll
+      const timeoutId = setTimeout(() => {
+        tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }, 100);
+      
+      return () => clearTimeout(timeoutId);
     }
   }, [activeCategory.id, isMobile]);
 
