@@ -35,7 +35,7 @@ const HeroSection = () => {
                       </span>
                       <p className="text-sm text-foreground">U spreekt met Luscia de AI-assistent van Huisartsenpraktijk het Centrum. Waarmee kan ik u helpen?</p>
                     </div>
-                    <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60">
+                    <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60 ml-4">
                       <p className="text-sm text-foreground">Ik ben benieuwd naar de uitslag van mijn bloedonderzoek.</p>
                     </div>
                     <div className="bg-background rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
