@@ -68,7 +68,7 @@ const HeroSection = () => {
 
                 {/* Audio indicator - outside container */}
                 <div className="absolute -top-4 right-4 text-primary z-10">
-                  <Volume2 className="w-5 h-5 animate-pulse-soft" />
+                  <Volume2 className="w-5 h-5 animate-pulse" />
                 </div>
               </div>
 
