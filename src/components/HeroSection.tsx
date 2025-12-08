@@ -24,9 +24,9 @@ const HeroSection = () => {
               </div>
 
               {/* Conversation bubbles and Luscia - bubbles above, Luscia below right */}
-              <div className="relative w-full max-w-[360px] lg:max-w-[420px] overflow-hidden rounded-[32px] shadow-xl border border-border bg-card p-4 lg:p-6">
+              <div className="relative w-full max-w-[360px] lg:max-w-[420px] overflow-hidden rounded-[32px] shadow-xl border border-border bg-card p-4 lg:p-6 flex flex-col aspect-[4/5] sm:aspect-[3/4]">
                 {/* Conversation bubbles - above Luscia */}
-                <div className="flex flex-col gap-3 mb-4">
+                <div className="flex flex-col gap-3 mb-4 flex-1">
                   <div className="bg-background rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
                     <span className="mt-0.5 text-primary">
                       <Bot className="w-4 h-4" />
@@ -45,12 +45,12 @@ const HeroSection = () => {
                 </div>
 
                 {/* Lucia - smaller, positioned right bottom */}
-                <div className="relative w-full max-w-[240px] lg:max-w-[280px] ml-auto">
+                <div className="relative w-full max-w-[160px] lg:max-w-[200px] ml-auto mt-auto">
                   <div className="overflow-hidden rounded-[32px] shadow-xl">
                     <img
                       src="/hero/Luscia_transparant.png"
                       alt="Luscia AI assistent"
-                      className="w-full h-full object-contain aspect-[4/5] sm:aspect-[3/4]"
+                      className="w-full h-full object-contain"
                       loading="lazy"
                     />
                   </div>
