@@ -24,10 +24,10 @@ const HeroSection = () => {
               </div>
 
               {/* Conversation bubbles and Luscia - bubbles above, Luscia below right */}
-              <div className="relative w-full max-w-[360px] lg:max-w-[420px] flex flex-col gap-4">
+              <div className="relative w-full max-w-[360px] lg:max-w-[420px] overflow-hidden rounded-[32px] shadow-xl border border-border bg-card p-4 lg:p-6">
                 {/* Conversation bubbles - above Luscia */}
-                <div className="flex flex-col gap-3 w-full">
-                  <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
+                <div className="flex flex-col gap-3 mb-4">
+                  <div className="bg-background rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
                     <span className="mt-0.5 text-primary">
                       <Bot className="w-4 h-4" />
                     </span>
@@ -36,7 +36,7 @@ const HeroSection = () => {
                   <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60">
                     <p className="text-sm text-foreground">Ik ben benieuwd naar de uitslag van mijn bloedonderzoek.</p>
                   </div>
-                  <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
+                  <div className="bg-background rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
                     <span className="mt-0.5 text-primary">
                       <Bot className="w-4 h-4" />
                     </span>
