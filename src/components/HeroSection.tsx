@@ -1,4 +1,4 @@
-import { Bot, Mic } from "lucide-react";
+import { Bot, Mic, Volume2, Radio, Signal, Activity, Waves } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -66,13 +66,28 @@ const HeroSection = () => {
                   <span className="text-muted-foreground">02:34</span>
                 </div>
 
-                {/* Waveform near status - outside container */}
-                <div className="absolute -top-4 right-4 flex items-end gap-1 text-primary z-10">
-                  <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft" />
-                  <span className="block w-1.5 h-7 rounded-full bg-primary animate-pulse-soft delay-75" />
-                  <span className="block w-1.5 h-4 rounded-full bg-primary animate-pulse-soft delay-150" />
-                  <span className="block w-1.5 h-6 rounded-full bg-primary animate-pulse-soft delay-225" />
-                  <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft delay-300" />
+                {/* Audio indicator - outside container - Speaking profile icon */}
+                <div className="absolute -top-4 right-4 text-primary z-10 animate-pulse-soft">
+                  <svg 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    className="text-primary"
+                  >
+                    {/* Profile head - smooth curve: forehead, nose, chin, neck */}
+                    <path d="M6 2C6 1 7 0 8 0C9 0 10 1 10 2C10 3 9.5 4.5 9 6C8.5 7.5 8 9 7.5 10.5C7 12 6.5 14 6 16C5.5 18 5 20 5 22" />
+                    {/* Open mouth - small indentation */}
+                    <path d="M8 9.5L8.3 10" />
+                    {/* Three concentric sound waves from mouth */}
+                    <path d="M8.5 10.5C9.5 10.5 10.5 11.5 10.5 12.5C10.5 13.5 9.5 14.5 8.5 14.5" strokeWidth="2.5" />
+                    <path d="M10.5 9C12 9 13.5 10.5 13.5 12C13.5 13.5 12 15 10.5 15" strokeWidth="2.5" />
+                    <path d="M13.5 7.5C15.5 7.5 17.5 9.5 17.5 11.5C17.5 13.5 15.5 15.5 13.5 15.5" strokeWidth="2.5" />
+                  </svg>
                 </div>
               </div>
 
