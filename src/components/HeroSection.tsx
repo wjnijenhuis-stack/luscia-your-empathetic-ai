@@ -69,24 +69,24 @@ const HeroSection = () => {
                 {/* Audio indicator - outside container - Speaking profile icon */}
                 <div className="absolute -top-4 right-4 text-primary z-10 animate-pulse-soft">
                   <svg 
-                    width="24" 
-                    height="24" 
-                    viewBox="0 0 24 24" 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 20 20" 
                     fill="none" 
                     stroke="currentColor" 
-                    strokeWidth="2.5" 
+                    strokeWidth="2" 
                     strokeLinecap="round" 
                     strokeLinejoin="round"
                     className="text-primary"
                   >
-                    {/* Profile head - smooth curve: forehead, nose, chin, neck */}
-                    <path d="M6 2C6 1 7 0 8 0C9 0 10 1 10 2C10 3 9.5 4.5 9 6C8.5 7.5 8 9 7.5 10.5C7 12 6.5 14 6 16C5.5 18 5 20 5 22" />
-                    {/* Open mouth - small indentation */}
-                    <path d="M8 9.5L8.3 10" />
-                    {/* Three concentric sound waves from mouth */}
-                    <path d="M8.5 10.5C9.5 10.5 10.5 11.5 10.5 12.5C10.5 13.5 9.5 14.5 8.5 14.5" strokeWidth="2.5" />
-                    <path d="M10.5 9C12 9 13.5 10.5 13.5 12C13.5 13.5 12 15 10.5 15" strokeWidth="2.5" />
-                    <path d="M13.5 7.5C15.5 7.5 17.5 9.5 17.5 11.5C17.5 13.5 15.5 15.5 13.5 15.5" strokeWidth="2.5" />
+                    {/* Profile head facing right - single smooth path */}
+                    <path d="M5 1.5C5 0.5 6 0 7 0C8 0 9 0.5 9 1.5C9 2.5 8.5 3.5 8 4.5C7.5 5.5 7 6.5 6.5 7.5C6 8.5 5.5 10 5 11.5C4.5 13 4 15 4 17" />
+                    {/* Open mouth indentation */}
+                    <path d="M7 7L7.2 7.5" strokeWidth="1.5" />
+                    {/* Three concentric sound waves */}
+                    <path d="M7.5 8C8.5 8 9.5 9 9.5 10C9.5 11 8.5 12 7.5 12" strokeWidth="2" />
+                    <path d="M9.5 6.5C11 6.5 12.5 8 12.5 9.5C12.5 11 11 12.5 9.5 12.5" strokeWidth="2" />
+                    <path d="M12.5 5C14.5 5 16.5 7 16.5 9C16.5 11 14.5 13 12.5 13" strokeWidth="2" />
                   </svg>
                 </div>
               </div>
