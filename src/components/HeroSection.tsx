@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className="section-padding relative z-10">
         <div className="container-wide">
           <div className="flex flex-col gap-8 lg:gap-12">
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start lg:items-center justify-center">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start lg:items-start justify-center">
               {/* Patient left */}
               <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card w-full max-w-[360px] lg:max-w-[420px]">
                 <img
@@ -23,50 +23,53 @@ const HeroSection = () => {
                 />
               </div>
 
-              {/* Lucia center/right */}
-              <div className="relative w-full max-w-[360px] lg:max-w-[420px]">
-                <div className="overflow-hidden rounded-[32px] shadow-xl">
-                  <img
-                    src="/hero/Luscia_transparant.png"
-                    alt="Luscia AI assistent"
-                    className="w-full h-full object-contain aspect-[4/5] sm:aspect-[3/4]"
-                    loading="lazy"
-                  />
+              {/* Conversation bubbles and Luscia - bubbles above, Luscia below right */}
+              <div className="relative w-full max-w-[360px] lg:max-w-[420px] flex flex-col gap-4">
+                {/* Conversation bubbles - above Luscia */}
+                <div className="flex flex-col gap-3 w-full">
+                  <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
+                    <span className="mt-0.5 text-primary">
+                      <Bot className="w-4 h-4" />
+                    </span>
+                    <p className="text-sm text-foreground">U spreekt met Luscia de AI-assistent van Huisartsenpraktijk het Centrum. Waarmee kan ik u helpen?</p>
+                  </div>
+                  <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60">
+                    <p className="text-sm text-foreground">Ik ben benieuwd naar de uitslag van mijn bloedonderzoek.</p>
+                  </div>
+                  <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
+                    <span className="mt-0.5 text-primary">
+                      <Bot className="w-4 h-4" />
+                    </span>
+                    <p className="text-sm text-foreground">Ik begrijp het. Ik haal de uitslag direct uit ons systeem en laat het u weten.</p>
+                  </div>
                 </div>
 
-                {/* Voice call indicator */}
-                <div className="absolute -top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card/90 backdrop-blur-sm border border-border shadow-lg text-xs font-medium text-foreground">
-                  <Mic className="w-4 h-4 text-primary" />
-                  <span>Spraakgesprek met Luscia</span>
-                  <span className="text-muted-foreground">02:34</span>
-                </div>
+                {/* Lucia - smaller, positioned right bottom */}
+                <div className="relative w-full max-w-[240px] lg:max-w-[280px] ml-auto">
+                  <div className="overflow-hidden rounded-[32px] shadow-xl">
+                    <img
+                      src="/hero/Luscia_transparant.png"
+                      alt="Luscia AI assistent"
+                      className="w-full h-full object-contain aspect-[4/5] sm:aspect-[3/4]"
+                      loading="lazy"
+                    />
+                  </div>
 
-                {/* Waveform near status */}
-                <div className="absolute -top-4 right-4 flex items-end gap-1 text-primary">
-                  <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft" />
-                  <span className="block w-1.5 h-7 rounded-full bg-primary animate-pulse-soft delay-75" />
-                  <span className="block w-1.5 h-4 rounded-full bg-primary animate-pulse-soft delay-150" />
-                  <span className="block w-1.5 h-6 rounded-full bg-primary animate-pulse-soft delay-225" />
-                  <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft delay-300" />
-                </div>
-              </div>
+                  {/* Voice call indicator */}
+                  <div className="absolute -top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card/90 backdrop-blur-sm border border-border shadow-lg text-xs font-medium text-foreground">
+                    <Mic className="w-4 h-4 text-primary" />
+                    <span>Spraakgesprek met Luscia</span>
+                    <span className="text-muted-foreground">02:34</span>
+                  </div>
 
-              {/* Conversation bubbles - positioned to the right of Luscia */}
-              <div className="flex flex-col gap-3 w-full max-w-[280px] sm:max-w-[300px] mx-auto lg:mx-0">
-                <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
-                  <span className="mt-0.5 text-primary">
-                    <Bot className="w-4 h-4" />
-                  </span>
-                  <p className="text-sm text-foreground">U spreekt met Luscia de AI-assistent van Huisartsenpraktijk het Centrum. Waarmee kan ik u helpen?</p>
-                </div>
-                <div className="bg-secondary rounded-2xl rounded-tr-sm p-3 shadow-md border border-border/60">
-                  <p className="text-sm text-foreground">Ik ben benieuwd naar de uitslag van mijn bloedonderzoek.</p>
-                </div>
-                <div className="bg-card rounded-2xl rounded-tl-sm p-3 shadow-md border border-border flex items-start gap-2">
-                  <span className="mt-0.5 text-primary">
-                    <Bot className="w-4 h-4" />
-                  </span>
-                  <p className="text-sm text-foreground">Ik begrijp het. Ik haal de uitslag direct uit ons systeem en laat het u weten.</p>
+                  {/* Waveform near status */}
+                  <div className="absolute -top-4 right-4 flex items-end gap-1 text-primary">
+                    <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft" />
+                    <span className="block w-1.5 h-7 rounded-full bg-primary animate-pulse-soft delay-75" />
+                    <span className="block w-1.5 h-4 rounded-full bg-primary animate-pulse-soft delay-150" />
+                    <span className="block w-1.5 h-6 rounded-full bg-primary animate-pulse-soft delay-225" />
+                    <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft delay-300" />
+                  </div>
                 </div>
               </div>
             </div>
