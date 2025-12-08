@@ -75,6 +75,16 @@ const HeroSection = () => {
                   <span className="block w-1.5 h-5 rounded-full bg-primary animate-pulse-soft delay-300" />
                 </div>
               </div>
+
+              {/* Reception right */}
+              <div className="overflow-hidden rounded-[32px] shadow-xl border border-border bg-card w-full max-w-[360px] lg:max-w-[420px]">
+                <img
+                  src="/hero/reception.png"
+                  alt="Receptie"
+                  className="w-full h-full object-cover aspect-[4/5] sm:aspect-[3/4]"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
             {/* Badges */}
