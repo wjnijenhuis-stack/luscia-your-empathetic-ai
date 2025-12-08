@@ -66,28 +66,9 @@ const HeroSection = () => {
                   <span className="text-muted-foreground">02:34</span>
                 </div>
 
-                {/* Audio indicator - outside container - Speaking profile icon */}
-                <div className="absolute -top-4 right-4 text-primary z-10 animate-pulse-soft">
-                  <svg 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 20 20" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                    className="text-primary"
-                  >
-                    {/* Profile head facing right - single smooth path */}
-                    <path d="M5 1.5C5 0.5 6 0 7 0C8 0 9 0.5 9 1.5C9 2.5 8.5 3.5 8 4.5C7.5 5.5 7 6.5 6.5 7.5C6 8.5 5.5 10 5 11.5C4.5 13 4 15 4 17" />
-                    {/* Open mouth indentation */}
-                    <path d="M7 7L7.2 7.5" strokeWidth="1.5" />
-                    {/* Three concentric sound waves */}
-                    <path d="M7.5 8C8.5 8 9.5 9 9.5 10C9.5 11 8.5 12 7.5 12" strokeWidth="2" />
-                    <path d="M9.5 6.5C11 6.5 12.5 8 12.5 9.5C12.5 11 11 12.5 9.5 12.5" strokeWidth="2" />
-                    <path d="M12.5 5C14.5 5 16.5 7 16.5 9C16.5 11 14.5 13 12.5 13" strokeWidth="2" />
-                  </svg>
+                {/* Audio indicator - outside container */}
+                <div className="absolute -top-4 right-4 text-primary z-10">
+                  <Volume2 className="w-5 h-5 animate-pulse-soft" />
                 </div>
               </div>
 
