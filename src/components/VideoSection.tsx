@@ -17,7 +17,7 @@ const VideoSection = () => {
       id: 3,
       title: "Eenzaamheid",
       description: "Zie hoe Luscia empathisch omgaat met gevoelige onderwerpen zoals eenzaamheid.",
-      src: "/videos/Luscia eenzaam.mp4",
+      src: "/videos/luscia eenzaam2.mp4",
     },
     {
       id: 4,
