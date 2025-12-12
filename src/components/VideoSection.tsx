@@ -4,31 +4,31 @@ const VideoSection = () => {
     {
       id: 1,
       title: "Bedverhoger",
-      description: "Zie hoe Luscia omgaat met vragen over bedverhogers en praktische hulpmiddelen.",
+      description: "Zie hoe Luscia omgaat met vragen over bedverhogers en praktische hulpmiddelen en doorverwijst.",
       src: "/videos/Luscia bedverhoger.mp4",
     },
     {
       id: 2,
       title: "Bloedonderzoek",
-      description: "Ontdek hoe Luscia patiënten informeert over bloedonderzoek en uitslagen.",
+      description: "Ontdek hoe Luscia cliënten informeert over bloedonderzoek en uitslagen.",
       src: "/videos/Luscia bloedonderzoek.mp4",
     },
     {
       id: 3,
       title: "Eenzaamheid",
-      description: "Zie hoe Luscia empathisch omgaat met gevoelige onderwerpen zoals eenzaamheid.",
+      description: "Zie hoe Luscia empathisch omgaat met gevoelige onderwerpen zoals eenzaamheid en doorverwijst.",
       src: "/videos/luscia eenzaam2.mp4",
     },
     {
       id: 4,
       title: "Engels",
-      description: "Luscia communiceert vloeiend in het Engels met internationale patiënten.",
+      description: "Luscia communiceert vloeiend in het Engels met internationale cliënten.",
       src: "/videos/Luscia engels.mp4",
     },
     {
       id: 5,
       title: "Ziek kind",
-      description: "Hoe Luscia zorgzaam omgaat met bezorgde ouders over een ziek kind.",
+      description: "Hoe Luscia zorgzaam omgaat met bezorgde ouder over een ziek kind en doorverwijst naar de huisartsassistent.",
       src: "/videos/luscia ziek kind.mp4",
     },
   ];
@@ -43,7 +43,7 @@ const VideoSection = () => {
               Leer Luscia kennen
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ontdek hoe Luscia uw praktijk kan ondersteunen door middel van deze video's.
+              Ontdek hoe Luscia uw praktijk kan ondersteunen.
             </p>
           </div>
 
