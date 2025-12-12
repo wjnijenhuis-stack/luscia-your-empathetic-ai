@@ -35,9 +35,11 @@ const CTASection = () => {
                 <span>Plan een gesprek</span>
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="heroOutline" className="w-full sm:w-auto">
-                <Play className="w-5 h-5 mr-2" />
-                <span>Bekijk de demo</span>
+              <Button variant="heroOutline" className="w-full sm:w-auto" asChild>
+                <a href="#leer-luscia-kennen">
+                  <Play className="w-5 h-5 mr-2" />
+                  <span>Leer Luscia kennen</span>
+                </a>
               </Button>
             </div>
 

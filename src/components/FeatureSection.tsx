@@ -10,7 +10,7 @@ const categories = [
       {
         icon: Phone,
         title: "Spraak Assistent",
-        description: "Patiënten kunnen bellen naar uw praktijk en worden direct te woord gestaan door Luscia met natuurlijke spraakherkenning."
+        description: "Cliënten kunnen bellen naar uw praktijk en worden direct te woord gestaan door Luscia met natuurlijke spraakherkenning."
       },
       {
         icon: Globe,
@@ -50,22 +50,22 @@ const categories = [
   {
     id: "02",
     title: "Slimme Zorg",
-    description: "Intelligente triage en doorverwijzing met directe koppeling aan uw huisartsinformatiesysteem.",
+    description: "Intelligente routering en doorverwijzing met directe koppelingen aan uw huisartsinformatiesysteem of (zorg)instanties.",
     features: [
       {
         icon: ArrowRight,
         title: "Slimme Doorverwijzer",
-        description: "Luscia beoordeelt de urgentie en verwijst door naar de juiste zorg: huisarts, HAP, of 112."
+        description: "Luscia beoordeelt de vraag van de cliënt en verwijst door naar de juiste zorg: huisartsassistent, zorgsysteem, sociaal-domeininstelling, etc"
       },
       {
         icon: Stethoscope,
         title: "HIS Koppeling",
-        description: "Directe koppeling met uw Huisarts Informatie Systeem voor up-to-date patiëntgegevens."
+        description: "Directe koppeling met uw Huisarts Informatie Systeem voor up-to-date cliëntgegevens."
       },
       {
         icon: Shield,
         title: "Veilige Escalatie",
-        description: "Bij spoedgevallen wordt direct doorgeschakeld naar een medewerker of alarmnummer."
+        description: "Bij spoedgevallen wordt direct doorgeschakeld naar een medewerker."
       }
     ],
     demo: (
@@ -100,22 +100,22 @@ const categories = [
   {
     id: "03",
     title: "Praktijkbeheer",
-    description: "Automatiseer afspraken en configureer Luscia volledig naar de behoeften van uw praktijk.",
+    description: "Uw tone-of-voice en configureer Luscia volledig naar de behoeften van uw praktijk.",
     features: [
       {
         icon: Calendar,
         title: "Afspraak Plannen",
-        description: "Patiënten kunnen direct een afspraak inplannen. Luscia checkt beschikbaarheid in real-time."
+        description: "Cliënten kunnen direct een afspraak inplannen. Luscia checkt beschikbaarheid in real-time."
       },
       {
         icon: Clock,
         title: "24/7 Beschikbaar",
-        description: "Ook buiten kantooruren staat Luscia klaar. Minder gemiste oproepen, meer tevreden patiënten."
+        description: "Ook buiten kantooruren staat Luscia klaar. Minder gemiste oproepen, meer tevreden cliënten."
       },
       {
         icon: Settings,
         title: "Op Maat Configureren",
-        description: "Volledig aan te passen aan uw werkwijze, openingstijden, en specifieke wensen."
+        description: "Volledig aan te passen aan uw werkwijze, tone-of-voice, openingstijden, en specifieke wensen."
       }
     ],
     demo: (
@@ -139,7 +139,7 @@ const categories = [
           </div>
         </div>
         <div className="space-y-2">
-          {["Openingstijden", "Begroeting", "Triage regels"].map((setting) => (
+          {["Openingstijden", "Begroeting", "Doorverwijs regels"].map((setting) => (
             <div key={setting} className="flex items-center justify-between p-3 bg-secondary rounded-xl">
               <span className="text-sm font-medium text-foreground">{setting}</span>
               <Settings className="w-4 h-4 text-muted-foreground" />
@@ -152,7 +152,7 @@ const categories = [
   {
     id: "04",
     title: "Veiligheid & Privacy",
-    description: "Uw gegevens blijven waar ze horen: in uw eigen praktijk. Luscia kan volledig lokaal draaien, volledig AVG-proof.",
+    description: "Uw gegevens blijven waar ze horen: in uw eigen praktijk. Luscia kan volledig lokaal draaien.",
     features: [
       {
         icon: Lock,
@@ -205,6 +205,7 @@ const FeatureSection = () => {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const isScrollingRef = useRef(false);
 
   // Detect viewport for mobile/desktop differences
   useEffect(() => {
@@ -223,6 +224,12 @@ const FeatureSection = () => {
       ticking = true;
 
       requestAnimationFrame(() => {
+        // Skip scroll spy updates if we're programmatically scrolling
+        if (isScrollingRef.current) {
+          ticking = false;
+          return;
+        }
+
         if (!containerRef.current) {
           ticking = false;
           return;
@@ -284,7 +291,7 @@ const FeatureSection = () => {
       clearTimeout(timeoutId);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isMobile]); // Remove activeCategory.id from dependencies to prevent re-initialization
+  }, [isMobile, activeCategory.id]); // Add activeCategory.id back to dependencies
 
   // Keep active tab in view on mobile
   useEffect(() => {
@@ -311,13 +318,27 @@ const FeatureSection = () => {
 
   // Smooth scroll to section when clicking nav
   const scrollToSection = (index: number) => {
+    // Set active category immediately for instant visual feedback
+    setActiveCategory(categories[index]);
+    
+    // Disable scroll spy during programmatic scroll
+    isScrollingRef.current = true;
+    
     const section = sectionRefs.current[index];
     if (section) {
       const offset = isMobile ? 80 : 120; // Account for sticky header
       const top = section.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
+      
+      // Re-enable scroll spy after scroll animation completes
+      // Smooth scroll typically takes 500-1000ms
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000);
+    } else {
+      // If no section found, re-enable immediately
+      isScrollingRef.current = false;
     }
-    setActiveCategory(categories[index]);
   };
 
   return (

@@ -45,8 +45,8 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost">
-              Demo bekijken
+            <Button variant="ghost" asChild>
+              <a href="#leer-luscia-kennen">Leer Luscia kennen</a>
             </Button>
             <Button variant="default">
               Contact
@@ -76,8 +76,8 @@ const Header = () => {
                 
                 {/* Mobile CTA Buttons */}
                 <div className="flex flex-col gap-4 mt-4 pt-6 border-t border-border">
-                  <Button variant="ghost" className="w-full justify-start" onClick={handleNavClick}>
-                    Demo bekijken
+                  <Button variant="ghost" className="w-full justify-start" asChild onClick={handleNavClick}>
+                    <a href="#leer-luscia-kennen">Leer Luscia kennen</a>
                   </Button>
                   <Button variant="default" className="w-full" onClick={handleNavClick}>
                     Contact
